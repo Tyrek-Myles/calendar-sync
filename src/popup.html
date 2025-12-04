@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ChatSync</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div>
+          <h1>ChatSync</h1>
+          <p class="subtitle">Turn AI plans into real schedules.</p>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="section-header">
+          <span class="section-title">Plan source</span>
+          <button id="loadFromChat" class="btn secondary">
+            Refresh from chat
+          </button>
+        </div>
+        <label for="planText" class="field-label"
+          >Plan text from ChatGPT:</label
+        >
+        <textarea
+          id="planText"
+          rows="9"
+          class="textarea"
+          placeholder='Ask ChatGPT for a workout/study/finance plan, then click "Refresh from chat". You can also paste or edit text here.'
+        ></textarea>
+      </section>
+
+      <section class="section">
+        <span class="section-title">Schedule options</span>
+        <div class="field-row">
+          <label class="field-label" for="startDate">Start date</label>
+          <input type="date" id="startDate" class="input" />
+        </div>
+        <div class="field-row">
+          <label class="field-label" for="durationMonths"
+            >Duration (months)</label
+          >
+          <input
+            type="number"
+            id="durationMonths"
+            class="input"
+            value="4"
+            min="1"
+          />
+        </div>
+        <p class="hint">
+          Lines with weekdays (Mon, Wed, etc.) repeat weekly. Lines with times
+          (e.g. &quot;6:30 am&quot; or &quot;18:00&quot;) become timed events.
+          Everything else becomes a simple all-day entry.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <span class="section-title">Preview</span>
+          <span class="preview-subtitle">First 10 events</span>
+        </div>
+        <div id="previewList" class="preview-list"></div>
+      </section>
+
+      <section class="section actions">
+        <button id="previewBtn" class="btn secondary">Preview schedule</button>
+        <button id="generateIcs" class="btn primary">Download .ics</button>
+      </section>
+
+      <p id="status" class="status"></p>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

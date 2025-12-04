@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "ChatSync",
+  "version": "0.1",
+  "description": "Import AI-generated plans from ChatGPT into calendar files.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["https://chat.openai.com/*", "https://chatgpt.com/*"],
+  "action": {
+    "default_title": "ChatSync",
+    "default_popup": "src/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chat.openai.com/*", "https://chatgpt.com/*"],
+      "js": ["src/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
